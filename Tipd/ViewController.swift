@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     let tipPercents = [5,10,15,20,25]
@@ -28,6 +29,8 @@ class ViewController: UIViewController {
         
         var totalAmountCalculated = inputBillAmount + tipAmountCalculated
         totalAmount.text = totalAmountCalculated.description
+    }
+    func loadDatabase(){
     }
     override func viewDidLoad() {
         
