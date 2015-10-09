@@ -22,17 +22,12 @@ class ViewController: UIViewController {
         billAmount.resignFirstResponder()
         var percentSelected = tipPercents[ sender.selectedSegmentIndex ]
         var inputBillAmount = (billAmount.text as NSString).floatValue ;
-        println(inputBillAmount)
-        println(percentSelected)
         
         var tipAmountCalculated = Float(percentSelected) * inputBillAmount / 100
         tipAmount.text = tipAmountCalculated.description
-        println(tipAmountCalculated)
         
         var totalAmountCalculated = inputBillAmount + tipAmountCalculated
         totalAmount.text = totalAmountCalculated.description
-        println(totalAmountCalculated)
-        
     }
     override func viewDidLoad() {
         
