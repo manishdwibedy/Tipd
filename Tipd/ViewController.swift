@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         
         let docsDir = dirPaths[0] as! String
         
-        let databasePath = docsDir.stringByAppendingPathComponent(s"contacts.db")
+        let databasePath = docsDir.stringByAppendingPathComponent("contacts.db")
         
         if !filemgr.fileExistsAtPath(databasePath as String) {
             
