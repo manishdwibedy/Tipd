@@ -10,11 +10,37 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let tipPercents = [5,10,15,20,25]
+    
+    @IBOutlet weak var billAmount: UITextField!
+    @IBOutlet weak var tipAmount: UITextField!
+    @IBOutlet weak var totalAmount: UITextField!
+    @IBOutlet weak var tipPercent: UISegmentedControl!
+    
+    
+    @IBAction func tipPercentChanged(sender: AnyObject) {
+        billAmount.resignFirstResponder()
+        var percentSelected = tipPercents[ sender.selectedSegmentIndex ]
+        var inputBillAmount = (billAmount.text as NSString).floatValue ;
+        println(inputBillAmount)
+        println(percentSelected)
+        
+        var tipAmountCalculated = Float(percentSelected) * inputBillAmount / 100
+        tipAmount.text = tipAmountCalculated.description
+        println(tipAmountCalculated)
+        
+        var totalAmountCalculated = inputBillAmount + tipAmountCalculated
+        totalAmount.text = totalAmountCalculated.description
+        println(totalAmountCalculated)
+        
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        billAmount.becomeFirstResponder()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
