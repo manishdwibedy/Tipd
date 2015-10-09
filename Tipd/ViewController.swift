@@ -32,13 +32,11 @@ class ViewController: UIViewController {
     func loadDatabase(){
         let filemgr = NSFileManager.defaultManager()
         let dirPaths =
-        NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
-            .UserDomainMask, true)
+        NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
         
         let docsDir = dirPaths[0] as! String
         
-        let databasePath = docsDir.stringByAppendingPathComponent(
-            "contacts.db")
+        let databasePath = docsDir.stringByAppendingPathComponent(s"contacts.db")
         
         if !filemgr.fileExistsAtPath(databasePath as String) {
             
