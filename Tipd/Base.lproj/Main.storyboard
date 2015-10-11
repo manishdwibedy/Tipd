@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="rEf-cQ-jdR">
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="rEf-cQ-jdR" customClass="bac">
                                 <rect key="frame" x="-162" y="-131" width="772" height="731"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="772" id="4Uf-Nu-1C9"/>
@@ -114,6 +114,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="5150" height="3433"/>
+        <image name="background" width="620" height="350"/>
     </resources>
 </document>
