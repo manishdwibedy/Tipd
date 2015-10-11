@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1B08921BCA13B000AF57C5 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1B08911BCA13B000AF57C5 /* DB.swift */; };
+		3F1B08931BCA148E00AF57C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FED92111BC85A7300763789 /* AppDelegate.swift */; };
 		3F930A6E1BC87CDE00BF43F1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F930A6D1BC87CDE00BF43F1 /* libsqlite3.dylib */; };
 		3F930B021BC880FF00BF43F1 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F930AF81BC880FF00BF43F1 /* FMDatabase.m */; };
 		3F930B031BC880FF00BF43F1 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F930AFA1BC880FF00BF43F1 /* FMDatabaseAdditions.m */; };
 		3F930B041BC880FF00BF43F1 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F930AFC1BC880FF00BF43F1 /* FMDatabasePool.m */; };
 		3F930B051BC880FF00BF43F1 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F930AFE1BC880FF00BF43F1 /* FMDatabaseQueue.m */; };
 		3F930B061BC880FF00BF43F1 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F930B011BC880FF00BF43F1 /* FMResultSet.m */; };
-		3FED92121BC85A7300763789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FED92111BC85A7300763789 /* AppDelegate.swift */; };
 		3FED92141BC85A7300763789 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FED92131BC85A7300763789 /* ViewController.swift */; };
 		3FED92171BC85A7300763789 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FED92151BC85A7300763789 /* Main.storyboard */; };
 		3FED92191BC85A7300763789 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FED92181BC85A7300763789 /* Images.xcassets */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F1B08911BCA13B000AF57C5 /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DB.swift; path = ../DB.swift; sourceTree = "<group>"; };
 		3F930A6D1BC87CDE00BF43F1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3F930AF61BC880FF00BF43F1 /* Tipd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tipd-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F930AF71BC880FF00BF43F1 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				3F930A901BC87F3600BF43F1 /* DB */,
 				3FED92111BC85A7300763789 /* AppDelegate.swift */,
 				3FED92131BC85A7300763789 /* ViewController.swift */,
+				3F1B08911BCA13B000AF57C5 /* DB.swift */,
 				3FED92151BC85A7300763789 /* Main.storyboard */,
 				3FED92181BC85A7300763789 /* Images.xcassets */,
 				3FED921A1BC85A7300763789 /* LaunchScreen.xib */,
@@ -253,11 +256,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1B08931BCA148E00AF57C5 /* AppDelegate.swift in Sources */,
 				3F930B021BC880FF00BF43F1 /* FMDatabase.m in Sources */,
+				3F1B08921BCA13B000AF57C5 /* DB.swift in Sources */,
 				3FED92141BC85A7300763789 /* ViewController.swift in Sources */,
 				3F930B061BC880FF00BF43F1 /* FMResultSet.m in Sources */,
 				3F930B041BC880FF00BF43F1 /* FMDatabasePool.m in Sources */,
-				3FED92121BC85A7300763789 /* AppDelegate.swift in Sources */,
 				3F930B031BC880FF00BF43F1 /* FMDatabaseAdditions.m in Sources */,
 				3F930B051BC880FF00BF43F1 /* FMDatabaseQueue.m in Sources */,
 			);

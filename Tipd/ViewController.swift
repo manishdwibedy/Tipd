@@ -19,6 +19,15 @@ class ViewController: UIViewController {
     
     
     @IBAction func tipPercentChanged(sender: AnyObject) {
+        
+        if(billAmount.text == "")
+        {
+            var alert = UIAlertController(title: "Error!!", message: "Enter the bill amount", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            billAmount.becomeFirstResponder()
+            return
+        }
         billAmount.resignFirstResponder()
         var percentSelected = tipPercents[ sender.selectedSegmentIndex ]
         var inputBillAmount = (billAmount.text as NSString).floatValue ;
@@ -33,17 +42,10 @@ class ViewController: UIViewController {
     }
     
     func loadDatabase(){
-        let filemgr = NSFileManager.defaultManager()
-        let dirPaths =
-        NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
-        
-        let docsDir = dirPaths[0] as! String
-        
-        let databasePath = docsDir.stringByAppendingPathComponent("contacts.db")
-
-        if !filemgr.fileExistsAtPath(databasePath as String) {
+        var d = DB()
+        if !d.getFileManager().fileExistsAtPath(d.getDBPath() as String) {
             
-            let contactDB = FMDatabase(path: databasePath as String)
+            let contactDB = FMDatabase(path: d.getDBPath() as String)
             
             if contactDB == nil {
                 println("Error: \(contactDB.lastErrorMessage())")
@@ -64,14 +66,9 @@ class ViewController: UIViewController {
     
     func insertData(tipPercent : Int)
     {
-        let filemgr = NSFileManager.defaultManager()
-        let dirPaths =
-        NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
+        var d =  DB()
         
-        let docsDir = dirPaths[0] as! String
-        
-        let databasePath = docsDir.stringByAppendingPathComponent("contacts.db")
-        let contactDB = FMDatabase(path: databasePath as String)
+        let contactDB = FMDatabase(path: d.getDBPath() as String)
         
         if contactDB.open() {
             
