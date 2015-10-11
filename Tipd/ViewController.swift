@@ -19,7 +19,11 @@ class ViewController: UIViewController {
     
     
     @IBAction func tipPercentChanged(sender: AnyObject) {
+
+        var percentSelected = tipPercents[ sender.selectedSegmentIndex ]
         
+        // Save the tip percentage irrespective of the error!
+        DB.insertData(percentSelected)
         if(billAmount.text == "")
         {
             var alert = UIAlertController(title: "Error!!", message: "Enter the bill amount", preferredStyle: UIAlertControllerStyle.Alert)
@@ -29,7 +33,7 @@ class ViewController: UIViewController {
             return
         }
         billAmount.resignFirstResponder()
-        var percentSelected = tipPercents[ sender.selectedSegmentIndex ]
+        
         var inputBillAmount = (billAmount.text as NSString).floatValue ;
         
         var tipAmountCalculated = Float(percentSelected) * inputBillAmount / 100
@@ -38,59 +42,16 @@ class ViewController: UIViewController {
         var totalAmountCalculated = inputBillAmount + tipAmountCalculated
         totalAmount.text = totalAmountCalculated.description
     
-        insertData(percentSelected)
+
     }
     
-    func loadDatabase(){
-        var d = DB()
-        if !d.getFileManager().fileExistsAtPath(d.getDBPath() as String) {
-            
-            let contactDB = FMDatabase(path: d.getDBPath() as String)
-            
-            if contactDB == nil {
-                println("Error: \(contactDB.lastErrorMessage())")
-            }
-            
-            if contactDB.open() {
-                let sql_stmt = "CREATE TABLE IF NOT EXISTS CONTACTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, ADDRESS TEXT, PHONE TEXT)"
-                if !contactDB.executeStatements(sql_stmt) {
-                    println("Error: \(contactDB.lastErrorMessage())")
-                }
-                contactDB.close()
-                println("Database connection..")
-            } else {
-                println("Error: \(contactDB.lastErrorMessage())")
-            }
-        }
-    }
-    
-    func insertData(tipPercent : Int)
-    {
-        var d =  DB()
-        
-        let contactDB = FMDatabase(path: d.getDBPath() as String)
-        
-        if contactDB.open() {
-            
-            let insertSQL = "INSERT INTO CONTACTS (name, address, phone) VALUES ('\(tipPercent.description)', 'dummy', 'dummy')"
-            
-            let result = contactDB.executeUpdate(insertSQL,
-                withArgumentsInArray: nil)
-            
-            if !result {
-                println("Error: \(contactDB.lastErrorMessage())")
-            } else {
-            }
-        } else {
-            println("Error: \(contactDB.lastErrorMessage())")
-        }
-    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
         billAmount.becomeFirstResponder()
-        
-        loadDatabase()
+    
+        // Initialize the DB
+        DB.initDatabase()
         // Do any additional setup after loading the view, typically from a nib.
     }
     

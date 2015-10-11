@@ -9,8 +9,8 @@
 import Foundation
 
 public class DB{
-    var databasepath : String
-    var filemgr : NSFileManager
+    let databasepath : String
+    let filemgr : NSFileManager
     init(){
         filemgr = NSFileManager.defaultManager()
         let dirPaths =
@@ -18,8 +18,55 @@ public class DB{
         
         let docsDir = dirPaths[0] as! String
         
-        self.databasepath = docsDir.stringByAppendingPathComponent("contacts.db")
+        databasepath = docsDir.stringByAppendingPathComponent("tips.db")
 
+    }
+    
+    class func initDatabase() -> Bool{
+        var d = DB()
+        if !d.getFileManager().fileExistsAtPath(d.getDBPath() as String) {
+            
+            let contactDB = FMDatabase(path: d.getDBPath() as String)
+            
+            if contactDB == nil {
+                println("Error: \(contactDB.lastErrorMessage())")
+            }
+            
+            if contactDB.open() {
+                let sql_stmt = "CREATE TABLE IF NOT EXISTS PREFS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, VALUE TEXT)"
+                if !contactDB.executeStatements(sql_stmt) {
+                    println("Could not execute statement: \(contactDB.lastErrorMessage())")
+                }
+                contactDB.close()
+                return true
+            } else {
+                println("Error: \(contactDB.lastErrorMessage())")
+            }
+        }
+        return false
+    }
+    
+    class func insertData(tipPercent : Int)
+    {
+        var d =  DB()
+        
+        let contactDB = FMDatabase(path: d.getDBPath() as String)
+        
+        if contactDB.open() {
+            
+            let insertSQL = "INSERT INTO PREFS (NAME, VALUE) VALUES ('tipPercent','\(tipPercent.description)')"
+            
+            println("Inserting tip percentage as \(tipPercent)")
+            let result = contactDB.executeUpdate(insertSQL,
+                withArgumentsInArray: nil)
+            
+            if !result {
+                println("Error: \(contactDB.lastErrorMessage())")
+            } else {
+            }
+        } else {
+            println("Error: \(contactDB.lastErrorMessage())")
+        }
     }
     
     func getDBPath() -> String{
