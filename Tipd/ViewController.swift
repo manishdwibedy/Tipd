@@ -17,13 +17,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalAmount: UITextField!
     @IBOutlet weak var tipPercent: UISegmentedControl!
     
+    var tipPercentageSelected = -1.0
+    @IBAction func billAmountChanged(sender: AnyObject) {
+        println(billAmount.text)
+        calculateTip()
+    }
     
     @IBAction func tipPercentChanged(sender: AnyObject) {
 
-        var percentSelected = tipPercents[ sender.selectedSegmentIndex ]
-        
         // Save the tip percentage irrespective of the error!
+        var percentSelected = tipPercents[ sender.selectedSegmentIndex ]
         DB.insertData(sender.selectedSegmentIndex)
+        
+        tipPercentageSelected = Double(percentSelected)/100.0
+        println(tipPercentageSelected)
+        billAmount.resignFirstResponder()
+        
+        calculateTip()
+
+    }
+    
+    func calculateTip()
+    {
+        
+        
         if(billAmount.text == "")
         {
             var alert = UIAlertController(title: "Error!!", message: "Enter the bill amount", preferredStyle: UIAlertControllerStyle.Alert)
@@ -32,19 +49,18 @@ class ViewController: UIViewController {
             billAmount.becomeFirstResponder()
             return
         }
-        billAmount.resignFirstResponder()
+        if(tipPercentageSelected != -1.0)
+        {
+            var inputBillAmount = (billAmount.text as NSString).doubleValue ;
+            
+            var tipAmountCalculated = self.tipPercentageSelected * inputBillAmount
+            tipAmount.text = tipAmountCalculated.description
+            
+            var totalAmountCalculated = inputBillAmount + tipAmountCalculated
+            totalAmount.text = totalAmountCalculated.description
+        }
         
-        var inputBillAmount = (billAmount.text as NSString).floatValue ;
-        
-        var tipAmountCalculated = Float(percentSelected) * inputBillAmount / 100
-        tipAmount.text = tipAmountCalculated.description
-        
-        var totalAmountCalculated = inputBillAmount + tipAmountCalculated
-        totalAmount.text = totalAmountCalculated.description
-    
-
     }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
