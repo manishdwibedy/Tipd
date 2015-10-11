@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>7CB92367-8991-4922-91CA-136A546CBDB6</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Tipd</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D0BD46BA3508F266194377AEF07498C8697D95E4</key>
 		<string>https://bitbucket.org/manish17/tipd</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Tipd.xcodeproj/project.xcworkspace</string>
+	<string>Tipd.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D0BD46BA3508F266194377AEF07498C8697D95E4</key>

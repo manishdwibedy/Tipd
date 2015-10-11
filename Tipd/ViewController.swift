@@ -28,7 +28,10 @@ class ViewController: UIViewController {
         
         var totalAmountCalculated = inputBillAmount + tipAmountCalculated
         totalAmount.text = totalAmountCalculated.description
+    
+        insertData(percentSelected)
     }
+    
     func loadDatabase(){
         let filemgr = NSFileManager.defaultManager()
         let dirPaths =
@@ -37,7 +40,7 @@ class ViewController: UIViewController {
         let docsDir = dirPaths[0] as! String
         
         let databasePath = docsDir.stringByAppendingPathComponent("contacts.db")
-        
+
         if !filemgr.fileExistsAtPath(databasePath as String) {
             
             let contactDB = FMDatabase(path: databasePath as String)
@@ -52,15 +55,45 @@ class ViewController: UIViewController {
                     println("Error: \(contactDB.lastErrorMessage())")
                 }
                 contactDB.close()
+                println("Database connection..")
             } else {
                 println("Error: \(contactDB.lastErrorMessage())")
             }
+        }
+    }
+    
+    func insertData(tipPercent : Int)
+    {
+        let filemgr = NSFileManager.defaultManager()
+        let dirPaths =
+        NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
+        
+        let docsDir = dirPaths[0] as! String
+        
+        let databasePath = docsDir.stringByAppendingPathComponent("contacts.db")
+        let contactDB = FMDatabase(path: databasePath as String)
+        
+        if contactDB.open() {
+            
+            let insertSQL = "INSERT INTO CONTACTS (name, address, phone) VALUES ('\(tipPercent.description)', 'dummy', 'dummy')"
+            
+            let result = contactDB.executeUpdate(insertSQL,
+                withArgumentsInArray: nil)
+            
+            if !result {
+                println("Error: \(contactDB.lastErrorMessage())")
+            } else {
+            }
+        } else {
+            println("Error: \(contactDB.lastErrorMessage())")
         }
     }
     override func viewDidLoad() {
         
         super.viewDidLoad()
         billAmount.becomeFirstResponder()
+        
+        loadDatabase()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
