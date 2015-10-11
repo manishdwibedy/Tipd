@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         var percentSelected = tipPercents[ sender.selectedSegmentIndex ]
         
         // Save the tip percentage irrespective of the error!
-        DB.insertData(percentSelected)
+        DB.insertData(sender.selectedSegmentIndex)
         if(billAmount.text == "")
         {
             var alert = UIAlertController(title: "Error!!", message: "Enter the bill amount", preferredStyle: UIAlertControllerStyle.Alert)
@@ -52,6 +52,13 @@ class ViewController: UIViewController {
     
         // Initialize the DB
         DB.initDatabase()
+        println("percentage")
+        println(DB.getPreference("tipPercent"))
+        let index = DB.getPreference("tipPercent")
+        if( index != "")
+        {
+            tipPercent.selectedSegmentIndex = index.toInt()!
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
     

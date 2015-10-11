@@ -9,7 +9,7 @@
 import Foundation
 
 public class DB{
-    let databasepath : String
+    public let databasepath : String
     let filemgr : NSFileManager
     init(){
         filemgr = NSFileManager.defaultManager()
@@ -67,6 +67,27 @@ public class DB{
         } else {
             println("Error: \(contactDB.lastErrorMessage())")
         }
+    }
+    
+    class func getPreference(name: String) -> String{
+        var d = DB()
+        var value = ""
+        let contactDB = FMDatabase(path: d.getDBPath() as String)
+        
+        if contactDB.open() {
+            let querySQL = "SELECT VALUE FROM PREFS WHERE NAME = '\(name)'"
+            
+            let results:FMResultSet? = contactDB.executeQuery(querySQL,
+                withArgumentsInArray: nil)
+            
+            if results?.next() == true {
+                value = results!.stringForColumn("VALUE")!
+            }
+            contactDB.close()
+        } else {
+            println("Error: \(contactDB.lastErrorMessage())")
+        }
+        return value
     }
     
     func getDBPath() -> String{
