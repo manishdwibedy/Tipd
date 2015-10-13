@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0B34D01BCC93390026017F /* git_config.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F0B34CF1BCC93390026017F /* git_config.txt */; };
 		3F1B08921BCA13B000AF57C5 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1B08911BCA13B000AF57C5 /* DB.swift */; };
 		3F1B08931BCA148E00AF57C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FED92111BC85A7300763789 /* AppDelegate.swift */; };
 		3F930A6E1BC87CDE00BF43F1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F930A6D1BC87CDE00BF43F1 /* libsqlite3.dylib */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F0B34CF1BCC93390026017F /* git_config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = git_config.txt; sourceTree = "<group>"; };
 		3F1B08911BCA13B000AF57C5 /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DB.swift; path = ../DB.swift; sourceTree = "<group>"; };
 		3F930A6D1BC87CDE00BF43F1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3F930AF61BC880FF00BF43F1 /* Tipd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tipd-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				3FED921A1BC85A7300763789 /* LaunchScreen.xib */,
 				3FED920F1BC85A7300763789 /* Supporting Files */,
 				3F930AF61BC880FF00BF43F1 /* Tipd-Bridging-Header.h */,
+				3F0B34CF1BCC93390026017F /* git_config.txt */,
 			);
 			path = Tipd;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FED92171BC85A7300763789 /* Main.storyboard in Resources */,
+				3F0B34D01BCC93390026017F /* git_config.txt in Resources */,
 				3FED921C1BC85A7300763789 /* LaunchScreen.xib in Resources */,
 				3FED92191BC85A7300763789 /* Images.xcassets in Resources */,
 			);

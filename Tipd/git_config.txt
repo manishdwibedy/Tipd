@@ -1,0 +1,3 @@
+cd Documents/tips
+git config —global user.email “manish.dwibedy@gmail.com”
+git config —global user.name “Manish Dwibedy”
