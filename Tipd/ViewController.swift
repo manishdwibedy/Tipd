@@ -77,6 +77,7 @@ class ViewController: UIViewController {
         if( index != "")
         {
             tipPercent.selectedSegmentIndex = index.toInt()!
+            tipPercentageSelected = Double(tipPercents[index.toInt()!]) / 100.0
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
