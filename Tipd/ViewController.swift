@@ -18,11 +18,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipPercent: UISegmentedControl!
     
     var tipPercentageSelected = -1.0
+    
+    // Bill amount changed.
     @IBAction func billAmountChanged(sender: AnyObject) {
-        println(billAmount.text)
         calculateTip()
     }
     
+    // Tip percentage changed.
     @IBAction func tipPercentChanged(sender: AnyObject) {
 
         // Save the tip percentage irrespective of the error!
@@ -34,13 +36,12 @@ class ViewController: UIViewController {
         billAmount.resignFirstResponder()
         
         calculateTip()
-
     }
     
+    // Calculates the tip
     func calculateTip()
     {
-        
-        
+        // Bill amount is not entered
         if(billAmount.text == "")
         {
             var alert = UIAlertController(title: "Error!!", message: "Enter the bill amount", preferredStyle: UIAlertControllerStyle.Alert)
@@ -49,6 +50,8 @@ class ViewController: UIViewController {
             billAmount.becomeFirstResponder()
             return
         }
+        
+        // Tip percentage is not set
         if(tipPercentageSelected != -1.0)
         {
             var inputBillAmount = (billAmount.text as NSString).doubleValue ;
@@ -59,8 +62,8 @@ class ViewController: UIViewController {
             var totalAmountCalculated = inputBillAmount + tipAmountCalculated
             totalAmount.text = totalAmountCalculated.description
         }
-        
     }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -68,8 +71,8 @@ class ViewController: UIViewController {
     
         // Initialize the DB
         DB.initDatabase()
-        println("percentage")
-        println(DB.getPreference("tipPercent"))
+    
+        // Gets the last selected tip percentage
         let index = DB.getPreference("tipPercent")
         if( index != "")
         {
